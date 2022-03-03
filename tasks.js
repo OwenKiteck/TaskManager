@@ -4,6 +4,7 @@ let repeat = true;
 let remove;
 let fullList = ``;
 let number = 0;
+let newTasks;
 const tasks = [
     `Charge MacBook`, 
     `Master JavaScript`
@@ -16,6 +17,7 @@ while (repeat) {
     What would you like to do (Please enter one of the options below):
     "TASKS" - Display all tasks
     "NEW" - Add a new task
+    "CHANGE" - Change a tasks
     "REMOVE" - Remove a task
     "CLOSE" - Close the task manager
     `);
@@ -38,6 +40,24 @@ while (repeat) {
     } else if (answer === `NEW`) {
         newTasks = prompt(`Enter a new task`);
         tasks.push(newTasks);
+
+    } else if (answer === `CHANGE`) {
+        for (i = 0; i < tasks.length; i++) {
+            fullList = `${fullList}
+            ${i + 1}: ${tasks[i]}`;
+        };
+        remove = prompt(`Please enter a number to Change:
+        ${fullList}`);
+        remove = parseInt(remove);        
+        while (!remove) {
+            remove = prompt(`Please enter a number to remove:
+            ${fullList}`)
+            remove = sparseInt(remove);
+        };
+        remove -= 1;
+        newTasks = prompt(`What do you want to change ${tasks[remove]} to?`)
+        tasks.splice(remove, 1, newTasks)
+        fullList = ``;
 
     } else if (answer === `REMOVE`) {
         for (i = 0; i < tasks.length; i++) {
@@ -70,6 +90,7 @@ while (repeat) {
         // fullList = ``;
 
     } else if (answer === `CLOSE`) {
+        alert(`Thank you for using TaskManager`)
         break;
     };
 }
