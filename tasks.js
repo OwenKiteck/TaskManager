@@ -31,11 +31,15 @@ while (repeat) {
         alert(fullList)
         fullList = ``;
 
-            // This is a different way (a little longer, but mostly the same)
-        // for (item of tasks) {
-        //     fullList = `${fullList} 
-        //     ${item}`
+        // better way
+        // for (items of tasks) {
+        //     fullList += `${task}\n`;
         // };
+        // alert(fullList)
+        // fullList = ``;
+
+
+
 
     } else if (answer === `NEW`) {
         newTasks = prompt(`Enter a new task`);
@@ -60,6 +64,7 @@ while (repeat) {
         fullList = ``;
 
     } else if (answer === `REMOVE`) {
+
         for (i = 0; i < tasks.length; i++) {
             fullList = `${fullList}
             ${i + 1}: ${tasks[i]}`;
